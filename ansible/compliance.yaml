@@ -1,7 +1,10 @@
-- hosts: localhost
+---
+- name: Apply OS hardening
+  hosts: localhost
+  become: yes  # This is important for system-level changes
   collections:
     - devsec.hardening
   roles:
     - devsec.hardening.os_hardening
-  vars: 
+  vars:
     ansible_role_name: os_hardening
