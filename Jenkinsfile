@@ -21,8 +21,9 @@ pipeline {
                         remote.identityFile = identity
                         
                         stage("Enforce with Ansible") {
-                            sshCommand remote: remote, sudo: true, command: 'cd /root/secops/ansible && git pull origin'
-                            sshCommand remote: remote, sudo: true, command: 'cd /root/secops/ansible && ansible-playbook compliance.yaml'
+                            // Using git -C to specify working directory
+                            sshCommand remote: remote, sudo: true, command: 'git -C /home/GitOps/secops/ansible pull origin'
+                            sshCommand remote: remote, sudo: true, command: 'ansible-playbook /home/GitOps/secops/ansible/compliance.yaml'
                         }
                         
                         stage("Scan with InSpec") {
