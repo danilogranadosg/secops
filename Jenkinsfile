@@ -27,7 +27,7 @@ pipeline {
                         }
                         
                         stage("Scan with InSpec") {
-                            sshCommand remote: remote, sudo: true, command: 'inspec exec --no-distinct-exit /root/linux-baseline/'
+                            sshCommand remote: remote, sudo: true, command: 'inspec exec /root/linux-baseline/'
                         }
                     }
                 }
