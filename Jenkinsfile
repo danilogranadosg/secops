@@ -8,7 +8,7 @@ pipeline {
                 script {
                     def remote = [:]
                     remote.name = "controlnode"
-                    remote.host = "34.51.35.44""
+                    remote.host = "34.51.35.44"
                     remote.allowAnyHosts = true
                     
                     withCredentials([sshUserPrivateKey(
